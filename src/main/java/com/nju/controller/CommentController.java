@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nju.configuration.DefaultVariable;
 import com.nju.entity.Comment;
 import com.nju.service.CommentService;
 
@@ -24,9 +25,9 @@ public class CommentController {
 		comment.setContent(content);
 		comment.setParentCommentId(parentCommentId);
 		if(commentService.save(comment)){
-			return "successful";
+			return DefaultVariable.SUCCESS;
 		}else{
-			return "false";
+			return DefaultVariable.FAILED;
 		}
 	}
 }

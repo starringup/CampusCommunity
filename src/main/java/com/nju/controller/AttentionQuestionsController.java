@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nju.configuration.DefaultVariable;
 import com.nju.entity.AttentionQuestions;
 import com.nju.entity.Question;
 import com.nju.service.AttentionQuestionsService;
@@ -27,15 +28,15 @@ public class AttentionQuestionsController {
 	@RequestMapping("/{attentionWeChatId}/{questionId}")
 	public String attention(@PathVariable String attentionWeChatId,@PathVariable String questionId){
 		if(attentionQuestionsService.findAttentionQuestionByAttentionWeChatIdAndQuestionId(attentionWeChatId, Long.parseLong(questionId.trim())) != null){
-			return "successful";
+			return DefaultVariable.SUCCESS;
 		}
 		AttentionQuestions attentionQuestions = new AttentionQuestions();
 		attentionQuestions.setAttentionWeChatId(attentionWeChatId);
 		attentionQuestions.setQuestionId(Long.parseLong(questionId.trim()));
 		if(attentionQuestionsService.save(attentionQuestions)){
-			return "successful";
+			return DefaultVariable.SUCCESS;
 		}else{
-			return "failed";
+			return DefaultVariable.FAILED;
 		}
 	}
 	

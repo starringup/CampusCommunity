@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nju.configuration.DefaultVariable;
 import com.nju.entity.AttentionUsers;
 import com.nju.service.AttentionUsersService;
 
@@ -23,9 +24,9 @@ public class AttentionUsersController {
 		attentionUsers.setAttentionWeChatId(attentionWeChatId);
 		attentionUsers.setAttentionedWeChatId(attentionedWeChatId);
 		if(attentionUsersService.save(attentionUsers)){
-			return "successful";
+			return DefaultVariable.SUCCESS;
 		}else{
-			return "failed";
+			return DefaultVariable.FAILED;
 		}
 	}
 }

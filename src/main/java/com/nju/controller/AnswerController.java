@@ -7,13 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.nju.configuration.DefaultVariable;
 import com.nju.entity.Answer;
 import com.nju.entity.Comment;
 import com.nju.service.AnswerService;
@@ -70,9 +69,9 @@ public class AnswerController {
 		answer.setContent(content);
 		answer.setAnonymous(anonymous == true ? anonymous : false);
 		if(answerService.save(answer)){
-			return "successful";
+			return DefaultVariable.SUCCESS;
 		}else{
-			return "failed";
+			return DefaultVariable.FAILED;
 		}
 	}
 }

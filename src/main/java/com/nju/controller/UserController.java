@@ -8,6 +8,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nju.entity.Answer;
@@ -65,4 +67,13 @@ public class UserController {
 		return jsonArray.toString();
 	}
 	
+	@RequestMapping(value = "/admin",method = RequestMethod.POST)
+	public String admin(@RequestParam(value = "userName",required = true) String userName,
+						@RequestParam(value = "password",required = true) String password){
+		if(userName.compareTo("admin") != 0 || password.compareTo("2018nju2018") != 0){
+			return DefaultVariable.FAILED;
+		}else{
+			return DefaultVariable.SUCCESS;
+		}
+	}
 }
