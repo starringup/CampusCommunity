@@ -56,6 +56,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<mainClass>com.nju.CampusCommunityApplication</mainClass>
+					<nonFilteredFileExtensions>
+						  <nonFilteredFileExtension>pem</nonFilteredFileExtension>
+                          <nonFilteredFileExtension>pfx</nonFilteredFileExtension>
+                          <nonFilteredFileExtension>p12</nonFilteredFileExtension>
+					</nonFilteredFileExtensions>
 				</configuration>
 			</plugin>
 		</plugins>
